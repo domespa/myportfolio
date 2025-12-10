@@ -1,0 +1,208 @@
+/**********************************
+              RESET
+**********************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/**********************************
+              HEADER
+**********************************/
+header {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+  height: 8dvh;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+}
+nav ul li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.header-container {
+  background-color: #cfd4d7;
+}
+/**********************************
+              HERO
+**********************************/
+.hero-container {
+  height: calc(100dvh - 8dvh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a4d4d 100%);
+}
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  padding: 0 1rem;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 8rem);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -2px;
+  color: white;
+  opacity: 0.8;
+}
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin-top: 1rem;
+  opacity: 0.8;
+  color: white;
+}
+.hero-btn {
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  animation: bounce 2s infinite;
+}
+.hero-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+/**********************************
+              ABOUT
+**********************************/
+.about-section {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/iam.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-container {
+  max-width: 800px;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 3rem;
+  border-radius: 16px;
+}
+
+.about-container h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+.about-container p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.8;
+  opacity: 0.9;
+}
+.pict {
+  position: relative;
+}
+.pict img {
+  max-height: 300px;
+  border-radius: 50%;
+  position: absolute;
+  top: -350px;
+  left: 50%;
+  transform: translateX(-50%);
+} /**********************************
+              SKILLS
+**********************************/
+.skills-container {
+  max-width: 1200px;
+  margin: auto;
+  height: 100dvh;
+  padding-top: 30px;
+}
+.skills-container h2 {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.cardskills-container {
+  background-color: #7a7e97;
+  height: 500px;
+  padding: 20px;
+}
+.skill {
+}
+/**********************************
+              RESPONSIVE
+**********************************/
+/** NASCONDO LA FOTO DA MOBILE **/
+@media (max-width: 767px) {
+  .pict img {
+    display: none;
+  }
+  .about-container {
+    padding-top: 2rem;
+  }
+}
+/** TABLET E DESKTOP **/
+@media (min-width: 768px) {
+  header {
+    padding: 0 2rem;
+  }
+}
+/** DESKTOP **/
+@media (min-width: 1024px) {
+  header {
+    padding: 0 3rem;
+  }
+  nav ul {
+    gap: 2rem;
+  }
+}
