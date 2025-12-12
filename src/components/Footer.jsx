@@ -32,12 +32,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="right-foot">
-          <h3>Contatti</h3>
+          <h3>⬇️ Nav</h3>
           <nav>
             <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
               <li>
                 <Link to="/progetti">Progetti</Link>
               </li>
