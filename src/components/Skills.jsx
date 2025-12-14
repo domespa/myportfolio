@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Skills() {
   const RADIUS = 50;
   const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
   useEffect(() => {
     const containers = document.querySelectorAll(".cardskills-container");
 
@@ -77,7 +78,6 @@ export default function Skills() {
     ],
     backend: [
       { name: "Node.js", icon: "./icon/nodejs.png", level: 85 },
-      { name: "Express.js", icon: "./icon/express.png", level: 85 },
       { name: "MySQL", icon: "./icon/mysql.png", level: 86 },
       { name: "Prisma", icon: "./icon/prisma.png", level: 85 },
       { name: "Supabase", icon: "./icon/supabase.png", level: 83 },
@@ -103,8 +103,27 @@ export default function Skills() {
     { key: "tools", title: "Tools & Development" },
   ];
 
+  // PARTICELLE
+  const renderParticles = () => {
+    const particles = [];
+    for (let i = 1; i <= 50; i++) {
+      let className = "particle ";
+      if (i % 3 === 0) {
+        className += "particle-large";
+      } else if (i % 2 === 0) {
+        className += "particle-medium";
+      } else {
+        className += "particle-small";
+      }
+      particles.push(<div key={i} className={className}></div>);
+    }
+    return particles;
+  };
+
   return (
     <div className="skill-sect">
+      {renderParticles()}
+
       <div id="skills" className="skills-container">
         <h2>Skills</h2>
         <div className="skills-wrapper">
@@ -114,7 +133,6 @@ export default function Skills() {
               <div className="skills-grid">
                 {skillsData[category.key].map((skill, skillIndex) => {
                   const gradientId = `gradient-${category.key}-${skillIndex}`;
-                  const circumference = 440;
 
                   return (
                     <div

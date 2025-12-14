@@ -1,13 +1,12 @@
 import Hero from "../components/Hero";
-import About from "../components/About";
 import Skills from "../components/Skills";
-import Footer from "../components/Footer";
+import About from "../components/About";
 
 export default function Homepage() {
   return (
     <>
       <Hero />
-      {/* <About /> */}
+      <About />
       <Skills />
     </>
   );

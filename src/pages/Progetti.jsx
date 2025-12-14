@@ -1,4 +1,20 @@
 export default function Progetti() {
+  const renderParticles = () => {
+    const particles = [];
+    for (let i = 1; i <= 15; i++) {
+      let className = "particle ";
+      if (i % 3 === 0) {
+        className += "particle-large";
+      } else if (i % 2 === 0) {
+        className += "particle-medium";
+      } else {
+        className += "particle-small";
+      }
+      particles.push(<div key={i} className={className}></div>);
+    }
+    return particles;
+  };
+
   const progetti = [
     {
       id: "1",
@@ -50,15 +66,17 @@ export default function Progetti() {
       demo: "https://travel-journal-app-ten.vercel.app/",
     },
   ];
+
   return (
     <div className="prog-sect">
+      {renderParticles()}
+
       <div className="container">
-        <h2>projects</h2>
+        <h2>Progetti</h2>
         <div className="prog-row">
           {progetti.map((progetto) => (
             <div className="prog-col" key={progetto.id}>
               <div className="flip-card">
-                {/* FRONTE */}
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
                     <div className="project-image">
@@ -78,7 +96,6 @@ export default function Progetti() {
                     </div>
                   </div>
 
-                  {/* RETRO */}
                   <div className="flip-card-back">
                     <div className="back-content">
                       <h4>{progetto.nome}</h4>
