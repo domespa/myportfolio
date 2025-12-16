@@ -68,8 +68,11 @@ export default function About() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.offsetTop - headerOffset;
+      const isMobile = window.innerWidth <= 768;
+      const headerOffset = isMobile ? 60 : 80;
+
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: elementPosition,
