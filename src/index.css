@@ -755,6 +755,7 @@ nav ul li a.active {
   gap: 20px;
   position: relative;
   z-index: 10;
+  padding-top: 80px;
 }
 
 .skills-container h2 {

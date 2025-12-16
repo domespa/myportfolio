@@ -126,12 +126,6 @@ export default function Hero() {
           </p>
 
           {showCTA && (
-            <p className="hero-tagline">
-              Trasformo idee in applicazioni web scalabili e performanti
-            </p>
-          )}
-
-          {showCTA && (
             <div className="hero-cta">
               <button
                 onClick={() => scrollToSection("about-section")}

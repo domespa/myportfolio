@@ -65,6 +65,34 @@ export default function Progetti() {
       link: "https://github.com/domespa/travel-journal-app",
       demo: "https://travel-journal-app-ten.vercel.app/",
     },
+    {
+      id: "4",
+      nome: "BoolShop",
+      descrizioneBreve: "Ecommerce per videogiochi",
+      descrizioneApprofondita: [
+        "Piattaforma e-commerce per videogiochi",
+        "",
+        "Features: searchbar con debounce, dual payment (Stripe + PayPal), chatbot",
+      ],
+      immagine: "./sitepng/boolshop.jpg",
+      tecnologie: ["React", "ChatBot", "JWT", "Debounce"],
+      link: "https://github.com/domespa/fe-boolshop",
+      demo: "https://fe-boolshop.vercel.app/",
+    },
+    {
+      id: "5",
+      nome: "TechBool",
+      descrizioneBreve: "Comparatore",
+      descrizioneApprofondita: [
+        "Comparatore di prodotti",
+        "",
+        "Features: searchbar con debounce, gestione preferiti, comparatore prodotti con spunta su specifica migliore",
+      ],
+      immagine: "./sitepng/comparatore.jpg",
+      tecnologie: ["React", "Debounce"],
+      link: "https://github.com/domespa/progetto-finale-spec-frontend-front",
+      demo: "https://progetto-finale-spec-frontend-front-jade.vercel.app/",
+    },
   ];
 
   return (
