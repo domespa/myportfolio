@@ -100,7 +100,7 @@ export default function Hero() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerOffset = 100;
+      const headerOffset = 70;
       const elementPosition = element.offsetTop - headerOffset;
 
       window.scrollTo({
