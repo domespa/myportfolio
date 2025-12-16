@@ -68,9 +68,12 @@ export default function About() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
+      const headerOffset = 80;
+      const elementPosition = element.offsetTop - headerOffset;
+
+      window.scrollTo({
+        top: elementPosition,
         behavior: "smooth",
-        block: "start",
       });
     }
   };
