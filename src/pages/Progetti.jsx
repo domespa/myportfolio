@@ -100,7 +100,7 @@ export default function Progetti() {
       descrizioneApprofondita: [
         "Piattaforma e-commerce enterprise",
         "",
-        "Aggiunta Features in più rispetto all'ecommerce SheThrivesADHD come il trackin del visitatore, quello che fa e dove si blocca",
+        "Aggiunta Features in più rispetto all'ecommerce SheThrivesADHD come il trackin del visitatore, quello che fa e dove si blocca, Upsell e Frequently Bought Together",
       ],
       immagine: "./sitepng/h4ppykids.jpg",
       tecnologie: [
