@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-left">
           <p className="footer-copyright">
-            © 2025 <strong>Domenico Spampinato</strong>
+            © 2026 <strong>Domenico Spampinato</strong>
           </p>
         </div>
 
