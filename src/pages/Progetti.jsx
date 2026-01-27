@@ -93,6 +93,28 @@ export default function Progetti() {
       link: "https://github.com/domespa/progetto-finale-spec-frontend-front",
       demo: "https://progetto-finale-spec-frontend-front-jade.vercel.app/",
     },
+    {
+      id: "6",
+      nome: "H4ppykids",
+      descrizioneBreve: "E-commerce enterprise full-stack",
+      descrizioneApprofondita: [
+        "Piattaforma e-commerce enterprise",
+        "",
+        "Aggiunta Features in più rispetto all'ecommerce SheThrivesADHD come il trackin del visitatore, quello che fa e dove si blocca",
+      ],
+      immagine: "./sitepng/h4ppikids.jpg",
+      tecnologie: [
+        "React ",
+        "TypeScript",
+        "Node.js",
+        "Prisma",
+        "Socket.io",
+        "Chart.js",
+        "React-Lucide",
+      ],
+      link: "https://github.com/domespa/digital-store-happykids",
+      demo: "https://www.h4ppykids.com/",
+    },
   ];
 
   return (
@@ -131,7 +153,7 @@ export default function Progetti() {
                         {progetto.descrizioneApprofondita.map(
                           (paragrafo, index) => (
                             <p key={index}>{paragrafo}</p>
-                          )
+                          ),
                         )}
                       </div>
                       <div className="project-links">
