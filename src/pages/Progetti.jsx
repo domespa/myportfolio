@@ -102,7 +102,7 @@ export default function Progetti() {
         "",
         "Aggiunta Features in più rispetto all'ecommerce SheThrivesADHD come il trackin del visitatore, quello che fa e dove si blocca",
       ],
-      immagine: "./sitepng/h4ppikids.jpg",
+      immagine: "./sitepng/h4ppykids.jpg",
       tecnologie: [
         "React ",
         "TypeScript",
