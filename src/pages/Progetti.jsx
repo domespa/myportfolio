@@ -115,6 +115,28 @@ export default function Progetti() {
       link: "https://github.com/domespa/digital-store-happykids",
       demo: "https://www.h4ppykids.com/",
     },
+    {
+      id: "7",
+      nome: "ScissorFlow",
+      descrizioneBreve: "",
+      descrizioneApprofondita: [
+        "Piattaforma SaaS multi-tenant costruita da zero per barbieri e saloni",
+        "",
+        "Sistema di prenotazioni con protezione no-show via OTP, blacklist automatica clienti, reminder via email e WhatsApp, slot fissi e dinamici senza conflitti, sync recensioni Google Business, gestione team con ruoli e permessi, pagina pubblica brandizzata per ogni barbiere.",
+      ],
+      immagine: "./sitepng/scissorflow.jpg",
+      tecnologie: [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Prisma",
+        "Stripe",
+        "Socket.io",
+      ],
+      link: "https://github.com/domespa/scissorflow",
+      demo: "https://www.scissorflow.com/",
+    },
   ];
 
   return (
