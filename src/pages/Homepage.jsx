@@ -1,6 +1,7 @@
 import Hero from "../components/Hero";
-import Skills from "../components/Skills";
 import About from "../components/About";
+import Skills from "../components/Skills";
+import Footer from "../components/Footer";
 
 export default function Homepage() {
   return (
@@ -8,6 +9,7 @@ export default function Homepage() {
       <Hero />
       <About />
       <Skills />
+      <Footer />
     </>
   );
 }
