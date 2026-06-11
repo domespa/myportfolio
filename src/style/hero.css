@@ -596,6 +596,7 @@ button.hero-btn-secondary {
   }
 
   .hero-window-wrap {
+    display: none;
     width: 38vw;
     height: 28vw;
     right: 2%;
@@ -609,7 +610,7 @@ button.hero-btn-secondary {
   }
 
   .hero-lamp {
-    left: 20px;
+    left: 6px;
     height: 850px;
     transform: scale(0.42);
     transform-origin: bottom left;
@@ -711,13 +712,13 @@ button.hero-btn-secondary {
 
   .hero-picture-frame {
     width: 94%;
-    top: 8px;
+    top: 50px;
   }
   .hero-monitor-body {
     width: 55vw;
   }
   .hero-clock {
-    width: 68px;
+    width: 80px;
   }
   .hero-clock-time {
     font-size: 9px;
