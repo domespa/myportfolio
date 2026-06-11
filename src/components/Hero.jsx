@@ -652,7 +652,7 @@ export default function Hero() {
               Scrivimi
             </Link>
             <Link to="/progetti" className="hero-btn-primary">
-              Dashboard Progetti
+              Progetti
             </Link>
           </div>
         </div>
