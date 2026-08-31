@@ -98,7 +98,7 @@ export default function ChatWidget() {
           <img src="/chatbot.png" alt="" className="cw-head-face" />
           <div className="cw-head-txt">
             <span className="cw-head-name">Domenico</span>
-            <span className="cw-head-sub">Assistente AI · risponde sui progetti</span>
+            <span className="cw-head-sub">Assistente AI</span>
           </div>
           <button
             className="cw-close"

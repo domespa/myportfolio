@@ -1,10 +1,48 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LIVE_PROJECTS } from "../data/projects";
 import "../style/progetti-home.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function ProgettiHome() {
+  const sezioneRef = useRef(null);
+
+  useEffect(() => {
+    const el = sezioneRef.current;
+    if (!el) return;
+
+    // Come in About.jsx: GSAP e' JS, il blocco CSS non lo ferma.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.fromTo(
+      el.querySelectorAll(".ph-card"),
+      { opacity: 0, y: 34 },
+      {
+        scrollTrigger: { trigger: el.querySelector(".ph-grid"), start: "top 82%" },
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.11,
+        ease: "power3.out",
+      },
+    );
+  }, []);
+
+  // Alone che segue il cursore: scrivo le coordinate come variabili CSS
+  // sull'elemento invece di passarle dallo stato, cosi' non si rirenderizza
+  // il componente a ogni movimento del mouse.
+  const seguiCursore = (e) => {
+    const card = e.currentTarget;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    card.style.setProperty("--my", `${e.clientY - r.top}px`);
+  };
+
   return (
-    <section id="progetti" className="ph">
+    <section id="progetti" className="ph" ref={sezioneRef}>
       <div className="ph-inner">
         <div className="ph-head">
           <div>
@@ -18,7 +56,14 @@ export default function ProgettiHome() {
 
         <div className="ph-grid">
           {LIVE_PROJECTS.map((p) => (
-            <article className="ph-card" key={p.id}>
+            <article
+              className="ph-card"
+              key={p.id}
+              onMouseMove={seguiCursore}
+              onPointerDown={seguiCursore}
+            >
+              <span className="ph-alone" aria-hidden="true" />
+
               <div className="ph-shot">
                 <img
                   src={p.cover}

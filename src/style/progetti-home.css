@@ -1,9 +1,41 @@
 .ph {
   border-top: 1px solid var(--line);
   background: var(--surface);
+  position: relative;
+}
+
+/* Reticolo da blueprint dietro le card. Due gradienti ripetuti invece di
+   un'immagine: nessuna richiesta di rete e scala con lo zoom.
+   La maschera radiale lo spegne verso i bordi, cosi' non taglia netto
+   sul confine con le sezioni vicine. Statico, nessuna animazione. */
+.ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.045) 0 1px,
+      transparent 1px 56px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.045) 0 1px,
+      transparent 1px 56px
+    );
+  -webkit-mask-image: radial-gradient(
+    120% 80% at 50% 45%,
+    #000 25%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(120% 80% at 50% 45%, #000 25%, transparent 78%);
 }
 
 .ph-inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--max);
   margin: 0 auto;
   padding: clamp(56px, 8vw, 96px) var(--pad-page);
@@ -47,9 +79,32 @@
   border: 1px solid var(--line);
   background: var(--void);
   transition: border-color 240ms;
+  position: relative;
+  isolation: isolate;
 }
 .ph-card:hover {
   border-color: var(--line-strong);
+}
+
+/* Alone ambra centrato sul cursore. Le coordinate arrivano da --mx/--my,
+   scritte in JS sull'elemento: nessun rirender di React al mousemove.
+   z-index -1 con isolation sulla card: sta sopra lo sfondo, sotto i contenuti. */
+.ph-alone {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms ease;
+  background: radial-gradient(
+    440px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 168, 61, 0.22),
+    rgba(255, 168, 61, 0.09) 40%,
+    transparent 70%
+  );
+}
+.ph-card:hover .ph-alone {
+  opacity: 1;
 }
 
 .ph-shot {

@@ -64,6 +64,9 @@ export default function Skills() {
     const el = sectionRef.current;
     if (!el) return;
 
+    // Vedi About.jsx: GSAP e' JS, il blocco CSS non lo tocca.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     // ANIMAZIONE PER OGNI CATEGORIA IN SEQUENZA
     el.querySelectorAll(".skills-category").forEach((cat, i) => {
       gsap.fromTo(

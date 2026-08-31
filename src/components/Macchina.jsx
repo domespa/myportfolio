@@ -157,8 +157,6 @@ export default function Macchina() {
             </div>
 
             <div className="mc-bar">
-              <span className="mc-brand mono-label">DS — workstation</span>
-
               <div className="mc-bar-right">
                 {on && !done && (
                   <button className="mc-skip mono-label" onClick={skip}>

@@ -247,14 +247,10 @@
   justify-content: space-between;
   padding: 0 4px;
 }
-.mc-brand {
-  transition: color 900ms ease;
-}
-.mc.on .mc-brand {
-  color: var(--dim);
-}
-
+/* margin-left auto invece di affidarsi a space-between: i comandi restano
+   a destra anche adesso che sono l'unico elemento della barra. */
 .mc-bar-right {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 16px;

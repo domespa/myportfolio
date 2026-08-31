@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { LIVE_PROJECTS } from "../data/projects";
+import Stelle from "./Stelle";
 import "../style/hero.css";
 
 export default function Hero() {
   return (
     <header className="hero">
+      <Stelle />
       <div className="hero-inner">
         {/* COLONNA SINISTRA: POSIZIONAMENTO */}
         <div className="hero-left">

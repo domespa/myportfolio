@@ -13,11 +13,15 @@ export default function App() {
   return (
     <>
       {conHeader && <Header />}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/progetti" element={<Progetti />} />
-        <Route path="/contatti" element={<Contatti />} />
-      </Routes>
+      {/* key sul pathname: il contenitore si rimonta a ogni cambio rotta,
+          quindi l'animazione di ingresso riparte da capo. */}
+      <div className="rotta" key={pathname}>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/progetti" element={<Progetti />} />
+          <Route path="/contatti" element={<Contatti />} />
+        </Routes>
+      </div>
       <ChatWidget />
     </>
   );

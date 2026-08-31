@@ -13,6 +13,11 @@ export default function About() {
     const el = sectionRef.current;
     if (!el) return;
 
+    // Il blocco prefers-reduced-motion in theme.css ferma solo le animazioni
+    // CSS: GSAP e' JavaScript e va escluso a mano. Saltando la fromTo gli
+    // elementi restano allo stato finale, gia' visibili.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     gsap.fromTo(
       el.querySelector(".about-header-block"),
       { opacity: 0, y: 40 },

@@ -129,6 +129,26 @@ img {
   border-color: var(--amber-soft);
 }
 
+/* Ingresso della pagina al cambio rotta. In CSS e non in JS: il blocco
+   prefers-reduced-motion in fondo lo neutralizza da solo.
+
+   SOLO opacita', mai transform: un transform qui -- anche a matrice identita',
+   che l'animazione lascia applicata -- rende .rotta il containing block dei
+   discendenti position:fixed. La sidebar di /progetti misurerebbe l'altezza
+   del contenitore invece del viewport e spingerebbe il bottone Homepage
+   fuori schermo. L'opacita' non ha questo effetto. */
+.rotta {
+  animation: rottaEntra 240ms ease-out both;
+}
+@keyframes rottaEntra {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 6px;
