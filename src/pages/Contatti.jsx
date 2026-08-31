@@ -1,23 +1,8 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import "../style/contatti.css";
 
 export default function Contatti() {
-  const renderParticles = () => {
-    const particles = [];
-    for (let i = 1; i <= 15; i++) {
-      let className = "particle ";
-      if (i % 3 === 0) {
-        className += "particle-large";
-      } else if (i % 2 === 0) {
-        className += "particle-medium";
-      } else {
-        className += "particle-small";
-      }
-      particles.push(<div key={i} className={className}></div>);
-    }
-    return particles;
-  };
-
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -53,7 +38,7 @@ export default function Contatti() {
           subject: formData.oggetto,
           message: formData.messaggio,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       console.log("✅ Email inviata!", result);
@@ -76,8 +61,6 @@ export default function Contatti() {
 
   return (
     <div className="contatti-section">
-      {renderParticles()}
-
       <div className="contatti-container">
         <div className="contatti-header">
           <p>Hai un progetto in mente? Parliamone!</p>
@@ -126,6 +109,28 @@ export default function Contatti() {
               <div>
                 <h4>Località</h4>
                 <p>Carlentini, Sicilia, Italia</p>
+              </div>
+            </div>
+
+            <div className="info-item">
+              <div className="info-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="8" y1="13" x2="16" y2="13"></line>
+                  <line x1="8" y1="17" x2="13" y2="17"></line>
+                </svg>
+              </div>
+              <div>
+                <h4>Partita IVA</h4>
+                <p>IT01937400891</p>
               </div>
             </div>
 

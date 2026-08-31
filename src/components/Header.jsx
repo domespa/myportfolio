@@ -1,36 +1,8 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "../style/header.css";
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
-
-  useEffect(() => {
-    if (!isHomePage) {
-      setIsVisible(true);
-      return;
-    }
-
-    let ticking = false;
-    const handleScroll = () => {
-      const triggerPoint = window.innerHeight * 0.9;
-      setIsVisible(window.scrollY > triggerPoint);
-    };
-
-    const optimizedScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", optimizedScroll);
-    return () => window.removeEventListener("scroll", optimizedScroll);
-  }, [isHomePage]);
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -39,7 +11,7 @@ export default function Header() {
   ];
 
   return (
-    <div className={`header-container ${isVisible ? "visible" : ""}`}>
+    <div className="header-container">
       <header>
         {/* LOGO / BRAND */}
         <Link to="/" className="header-logo" aria-label="Torna alla home">

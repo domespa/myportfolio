@@ -53,9 +53,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-d-line" />
-        <p className="footer-d-copy">
-          © 2026 · Carlentini, Sicilia · Disponibile da remoto
-        </p>
+        <p className="footer-d-copy">© 2026 · Carlentini, Sicilia</p>
+        <p className="footer-d-vat">P. IVA IT01937400891</p>
       </div>
     </footer>
   );

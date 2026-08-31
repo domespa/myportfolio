@@ -100,7 +100,7 @@ export default function Skills() {
       <div className="skills-inner">
         {/* HEADER */}
         <div className="skills-header">
-          <span className="skills-tag">Stack</span>
+          <p className="mono-label">Stack</p>
           <h2 className="skills-title">Tecnologie</h2>
           <p className="skills-subtitle">
             Strumenti che uso per costruire prodotti reali

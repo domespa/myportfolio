@@ -1,0 +1,124 @@
+/* Header fisso. Non compare su /progetti, che ha la sua sidebar:
+   la condizione sta in App.jsx.
+   Lo sfondo usa un token invece di un rgba() scritto a mano,
+   cosi' non resta indietro quando cambia la palette. */
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(var(--header-bg-rgb), 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-container header {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px var(--pad-page);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* LOGO */
+.header-logo {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--txt);
+  text-decoration: none;
+  transition: color 200ms;
+}
+.header-logo:hover {
+  color: var(--amber);
+}
+.header-logo-bracket {
+  color: var(--faint);
+  transition: color 200ms;
+}
+.header-logo:hover .header-logo-bracket {
+  color: var(--amber);
+}
+
+/* NAV */
+.header-container nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.header-container nav a {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 200ms,
+    border-color 200ms;
+}
+.header-container nav a:hover {
+  color: var(--txt);
+}
+.header-container nav a.active {
+  color: var(--txt);
+  border-bottom-color: var(--amber);
+}
+
+/* CV */
+.header-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt);
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 7px),
+    calc(100% - 7px) 100%,
+    0 100%
+  );
+  transition:
+    background 220ms,
+    border-color 220ms,
+    color 220ms;
+}
+.header-cv-btn:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #1a1206;
+}
+.header-cv-btn:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .header-container nav ul {
+    gap: 18px;
+  }
+  .header-container nav a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .header-cv-btn span {
+    display: none;
+  }
+  .header-cv-btn {
+    padding: 10px 12px;
+  }
+}

@@ -26,22 +26,6 @@ export default function About() {
     );
 
     gsap.fromTo(
-      el.querySelectorAll(".about-info-card"),
-      { opacity: 0, y: 30 },
-      {
-        scrollTrigger: {
-          trigger: el.querySelector(".about-info-cards"),
-          start: "top 80%",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.12,
-        ease: "power3.out",
-      },
-    );
-
-    gsap.fromTo(
       el.querySelectorAll(".about-service-item"),
       { opacity: 0, y: 20 },
       {
@@ -63,7 +47,7 @@ export default function About() {
       <div className="about-inner">
         {/* HEADER: TAG + NOME + RUOLO + BIO */}
         <div className="about-header-block">
-          <span className="about-tag">Chi sono</span>
+          <p className="mono-label">Chi sono</p>
           <h2 className="about-title">Domenico Spampinato</h2>
           <p className="about-role-line">Full-Stack Developer</p>
           <div className="about-bio">

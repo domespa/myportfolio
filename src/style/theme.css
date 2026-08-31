@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Fondi alzati rispetto al quasi-nero iniziale: la pagina resta scura
+     ma smette di schiacciare tutto. */
+  --void: #1b2430;
+  --surface: #25303d;
+
+  /* Barra di navigazione: piu' scura del fondo pagina, cosi' stacca invece
+     di confondersi con l'hero. In r,g,b perche' serve con trasparenza. */
+  --header-bg-rgb: 15, 21, 30;
+  --line: #333f4e;
+  --line-strong: #5b6a7b;
+
+  /* Grigi tarati sul contrasto WCAG AA (4.5:1) contro --void e --surface:
+     il vecchio --faint stava a 2.7:1 ed era di fatto illeggibile. */
+  --txt: #e9eef5;
+  --dim: #b3bfcd;
+  --faint: #95a1b0;
+
+  --amber: #ffa83d;
+  --amber-soft: #ffb85c;
+  --green: #5fd08a;
+
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --display: "Chakra Petch", system-ui, sans-serif;
+
+  --pad-page: clamp(20px, 4vw, 32px);
+  --max: 1180px;
+
+  /* Altezza dell'header fisso: le pagine che gli stanno sotto ci si allineano. */
+  --header-h: 67px;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--void);
+  color: var(--txt);
+  font-family: var(--display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  background: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* UTILITY CONDIVISE */
+
+/* Etichetta monospace ricorrente: eyebrow, label di sezione, tag */
+.mono-label {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Angolo tagliato: firma visiva riusata su bottoni e card */
+.cut {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 9px),
+    calc(100% - 9px) 100%,
+    0 100%
+  );
+}
+
+.btn {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 26px;
+  border: 1px solid var(--line-strong);
+  color: var(--txt);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 220ms,
+    border-color 220ms,
+    color 220ms;
+}
+.btn:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.btn-solid {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #1a1206;
+}
+.btn-solid:hover {
+  background: var(--amber-soft);
+  border-color: var(--amber-soft);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

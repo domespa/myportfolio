@@ -1,0 +1,399 @@
+/* BOTTONE FLOTTANTE
+   La foto va in public/chatbot.png. Cerchio, contrasto e pallino di stato
+   sono fatti qui: non serve scontornare l'immagine a mano. */
+
+.cw-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  overflow: visible;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    opacity 200ms ease;
+}
+.cw-fab:hover {
+  transform: translateY(-3px);
+  border-color: var(--amber);
+  box-shadow:
+    0 8px 26px rgba(0, 0, 0, 0.5),
+    0 0 0 4px rgba(255, 168, 61, 0.1);
+}
+.cw-fab:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
+}
+.cw-fab.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.85);
+}
+
+/* Saltello ogni 5 secondi: il salto occupa solo la coda del ciclo,
+   il resto e' riposo. Due rimbalzi, il secondo piu' basso. */
+@keyframes cwHop {
+  0%,
+  84%,
+  100% {
+    transform: translateY(0);
+  }
+  88% {
+    transform: translateY(-10px);
+  }
+  92% {
+    transform: translateY(0);
+  }
+  95% {
+    transform: translateY(-5px);
+  }
+  98% {
+    transform: translateY(0);
+  }
+}
+
+.cw-fab {
+  animation: cwHop 5s ease-in-out infinite;
+}
+
+/* Un'animazione in corso batte sempre il transform delle regole normali:
+   va spenta, o hover e stato nascosto non riuscirebbero a muoversi. */
+.cw-fab:hover,
+.cw-fab.hidden {
+  animation: none;
+}
+
+.cw-fab img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  /* Alza il contrasto: una foto normale in piccolo diventa una macchia. */
+  filter: grayscale(1) contrast(1.25) brightness(1.08);
+}
+
+.cw-status {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--void);
+  animation: cwPulse 2.6s ease-in-out infinite;
+}
+@keyframes cwPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.cw-tip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+.cw-fab:hover .cw-tip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* PANNELLO */
+.cw-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 901;
+  width: 370px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.97);
+  transform-origin: bottom right;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+.cw-panel.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.cw-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 14px 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.cw-head-face {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--line-strong);
+  filter: grayscale(1) contrast(1.2);
+  flex: none;
+}
+.cw-head-txt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.cw-head-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.cw-head-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+}
+.cw-close {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--faint);
+  transition: color 200ms;
+  flex: none;
+}
+.cw-close:hover {
+  color: var(--txt);
+}
+.cw-close:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.cw-close svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.cw-feed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  scrollbar-width: thin;
+}
+
+.cw-msg {
+  display: flex;
+}
+.cw-bot {
+  justify-content: flex-start;
+}
+.cw-me {
+  justify-content: flex-end;
+}
+
+.cw-bubble {
+  max-width: 82%;
+  font-size: 14.5px;
+  line-height: 1.55;
+  padding: 10px 13px;
+  animation: cwIn 240ms ease-out;
+}
+@keyframes cwIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cw-bot .cw-bubble {
+  background: #2e3a48;
+  color: var(--dim);
+  border: 1px solid var(--line);
+  border-radius: 3px 11px 11px 11px;
+}
+.cw-me .cw-bubble {
+  background: rgba(255, 168, 61, 0.1);
+  color: var(--txt);
+  border: 1px solid rgba(255, 168, 61, 0.28);
+  border-radius: 11px 3px 11px 11px;
+}
+.cw-err {
+  color: #e8836b !important;
+  border-color: rgba(232, 131, 107, 0.35) !important;
+}
+
+.cw-typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 13px;
+}
+.cw-typing i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--faint);
+  animation: cwDot 1.3s ease-in-out infinite;
+}
+.cw-typing i:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.cw-typing i:nth-child(3) {
+  animation-delay: 0.36s;
+}
+@keyframes cwDot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.25;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+/* SUGGERIMENTI: un campo vuoto blocca, quattro domande insegnano il perimetro */
+.cw-chips {
+  padding: 0 16px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cw-chip {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--dim);
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  transition:
+    border-color 200ms,
+    color 200ms;
+}
+.cw-chip:hover {
+  border-color: var(--line-strong);
+  color: var(--txt);
+}
+.cw-chip:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.cw-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 12px 12px 16px;
+  border-top: 1px solid var(--line);
+}
+.cw-input input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--txt);
+  font-family: var(--display);
+  font-size: 15px;
+  caret-color: var(--amber);
+}
+.cw-input input::placeholder {
+  color: var(--faint);
+}
+.cw-send {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  color: var(--amber);
+  flex: none;
+  transition:
+    background 200ms,
+    border-color 200ms;
+}
+.cw-send:hover:not(:disabled) {
+  background: rgba(255, 168, 61, 0.1);
+  border-color: var(--amber);
+}
+.cw-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.cw-send:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.cw-send svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+@media (max-width: 520px) {
+  .cw-fab {
+    right: 16px;
+    bottom: 16px;
+    width: 64px;
+    height: 64px;
+  }
+  .cw-tip {
+    display: none;
+  }
+  .cw-panel {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+    height: min(560px, calc(100vh - 24px));
+  }
+}
