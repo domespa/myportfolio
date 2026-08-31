@@ -29,7 +29,7 @@ export default defineConfig([
   {
     // Le serverless function girano su Node, non nel browser:
     // senza questo `process` risulta non definito.
-    files: ['api/**/*.js'],
+    files: ['api/**/*.js', 'vite.config.js'],
     languageOptions: {
       globals: globals.node,
     },
