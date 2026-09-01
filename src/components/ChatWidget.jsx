@@ -25,7 +25,7 @@ export default function ChatWidget() {
   const [msgs, setMsgs] = useState([
     {
       from: "bot",
-      t: "Ciao. Chiedimi quello che vuoi sui miei progetti o su come lavoro.",
+      t: "Ciao, sono MimmoBot, l'assistente virtuale di Domenico. Dimmi tutto!",
     },
   ]);
   const [value, setValue] = useState("");
@@ -97,7 +97,7 @@ export default function ChatWidget() {
         <div className="cw-head">
           <img src="/chatbot.png" alt="" className="cw-head-face" />
           <div className="cw-head-txt">
-            <span className="cw-head-name">Domenico</span>
+            <span className="cw-head-name">MimmoBot</span>
             <span className="cw-head-sub">Assistente AI</span>
           </div>
           <button
